@@ -2,7 +2,6 @@ var duck = require("duck");
 
 var NumberingReader = require("../../lib/docx/numbering-xml").NumberingReader;
 var readNumberingStylesXml = require("../../lib/docx/styles-reader").readNumberingStylesXml;
-var readStylesXml = require("../../lib/docx/styles-reader").readStylesXml;
 var XmlElement = require("../../lib/xml").Element;
 var test = require("../test")(module);
 
@@ -49,7 +48,7 @@ test('w:abstractNum element inherits levels from styles.xml numbering style', fu
                 ])
             ]),
             new XmlElement("w:abstractNum", {"w:abstractNumId": "45"}, [
-                new XmlElement("w:numStyleLink", {"w:val":"CustomBulletList"})
+                new XmlElement("w:numStyleLink", {"w:val": "CustomBulletList"})
             ]),
             new XmlElement("w:num", {"w:numId": "51"}, [
                 new XmlElement("w:abstractNumId", {"w:val": "45"})
@@ -69,13 +68,13 @@ test('w:abstractNum element inherits levels from styles.xml numbering style', fu
 });
 
 function numberingStyle(name, numId) {
-    return new XmlElement("w:style", 
-        {"w:type":"numbering", "w:styleId":name},[
+    return new XmlElement("w:style",
+        {"w:type": "numbering", "w:styleId": name}, [
             new XmlElement("w:pPr", {}, [
                 new XmlElement("w:numPr", {}, [
-                    new XmlElement("w:numId", {"w:val":numId})
+                    new XmlElement("w:numId", {"w:val": numId})
                 ])
             ])
-        ] 
+        ]
     );
 }
