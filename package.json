@@ -14,7 +14,7 @@
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gorjan-h4/mammoth.js.git"
+    "url": "https://github.com/hfour/mammoth.js.git"
   },
   "dependencies": {
     "argparse": "~1.0.3",
@@ -46,8 +46,13 @@
   },
   "scripts": {
     "pretest": "eslint lib tests",
+    "deep-clean": "git clean -fdx ./build ./node_modules",
+    "clean": "git clean -fdx ./build",
     "test": "mocha 'test/**/*.tests.js'",
-    "prepublish": "make mammoth.browser.min.js"
+    "build": "mkdir build && npm run mammoth.browser.js && npm run mammoth.browser.min.js",
+    "mammoth.browser.js": "node_modules/.bin/browserify lib/index.js --standalone mammoth -p browserify-prepend-licenses > build/mammoth.browser.js",
+    "mammoth.browser.min.js": "node_modules/.bin/browserify lib/index.js --standalone mammoth -p browserify-prepend-licenses > mammoth.browser.min.js",
+    "prepublishOnly": "npm run pretest && npm run build"
   },
   "license": "BSD-2-Clause"
 }
