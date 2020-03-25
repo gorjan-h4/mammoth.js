@@ -1,7 +1,7 @@
 {
   "name": "h4mammoth",
   "version": "2.0.7",
-  "author": "Gorjan Petrovski<gp@hfour.com>, Michael Williamson <mike@zwobble.org>",
+  "author": "Gorjan Petrovski<gorjan@hfour.com>, Michael Williamson <mike@zwobble.org>",
   "description": "Incompatible fork from mammoth.js. Convert Word documents from docx to simple HTML and Markdown",
   "keywords": [
     "docx",
@@ -49,10 +49,10 @@
     "deep-clean": "git clean -fdx ./build ./node_modules",
     "clean": "git clean -fdx ./build",
     "test": "mocha 'test/**/*.tests.js'",
-    "build": "mkdir build && npm run mammoth.browser.js && npm run mammoth.browser.min.js",
+    "build": "mkdir build && yarn mammoth.browser.js && yarn mammoth.browser.min.js",
     "mammoth.browser.js": "node_modules/.bin/browserify lib/index.js --standalone mammoth -p browserify-prepend-licenses > build/mammoth.browser.js",
     "mammoth.browser.min.js": "node_modules/.bin/browserify lib/index.js --standalone mammoth -p browserify-prepend-licenses > mammoth.browser.min.js",
-    "prepublishOnly": "npm run pretest && npm run build"
+    "prepublishOnly": "yarn pretest && yarn build"
   },
   "license": "BSD-2-Clause"
 }
