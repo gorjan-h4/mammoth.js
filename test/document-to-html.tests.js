@@ -711,7 +711,7 @@ test('when custom image handler throws error then error is stored in error messa
     var error = new Error("Failed to convert image");
     var image = new documents.Image({
         readImage: function(encoding) {
-            return promises.when(new Buffer.alloc().toString(encoding));
+            return promises.when(Buffer.alloc().toString(encoding));
         },
         contentType: "image/png"
     });

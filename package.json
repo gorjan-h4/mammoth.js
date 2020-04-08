@@ -45,15 +45,15 @@
     "mammoth": "bin/mammoth"
   },
   "scripts": {
-    "pretestPrepublish": "eslint lib tests",
+    "pretest": "eslint lib tests",
     "deep-clean": "git clean -fdx ./build ./node_modules",
     "clean": "git clean -fdx ./build",
     "test": "mocha 'test/**/*.tests.js'",
-    "testfile":"mocha ",
-    "build": "mkdir build && yarn mammoth.browser.js && yarn mammoth.browser.min.js",
-    "mammoth.browser.js": "node_modules/.bin/browserify lib/index.js --standalone mammoth -p browserify-prepend-licenses > build/mammoth.browser.js",
-    "mammoth.browser.min.js": "node_modules/.bin/browserify lib/index.js --standalone mammoth -p browserify-prepend-licenses > mammoth.browser.min.js",
-    "prepublishOnly": "yarn pretestPrepublish && yarn test && yarn build"
+    "testfile": "mocha",
+    "build": "mkdir -p build && yarn mammoth.browser.js && yarn mammoth.browser.min.js",
+    "mammoth.browser.js": "node_modules/.bin/browserify lib/index.js --standalone mammoth -p browserify-prepend-licenses > ./build/mammoth.browser.js",
+    "mammoth.browser.min.js": "node_modules/.bin/browserify lib/index.js --standalone mammoth -p browserify-prepend-licenses > ./build/mammoth.browser.min.js",
+    "prepublishOnly": "yarn pretest && yarn test && yarn build"
   },
   "license": "BSD-2-Clause"
 }
