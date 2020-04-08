@@ -259,7 +259,7 @@ test('simple list is converted to list elements', function() {
 test('word tables are converted to html tables', function() {
     var docxPath = path.join(__dirname, "test-data/tables.docx");
     return mammoth.convertToHtml({path: docxPath}).then(function(result) {
-        var expectedHtml = `<p>Above</p><table data-table-grid="[4621,4621]"><tr><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Top left</p></td><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Top right</p></td></tr><tr><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Bottom left</p></td><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Bottom right</p></td></tr></table><p>Below</p>`;
+        var expectedHtml = '<p>Above</p><table data-table-grid="[4621,4621]"><tr><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Top left</p></td><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Top right</p></td></tr><tr><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Bottom left</p></td><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Bottom right</p></td></tr></table><p>Below</p>';
         assert.equal(result.value, expectedHtml);
         assert.deepEqual(result.messages, []);
     });

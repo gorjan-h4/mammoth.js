@@ -411,10 +411,10 @@ test('docx table is converted to table in HTML', function() {
     var converter = new DocumentConverter();
     
     return converter.convertToHtml(table).then(function(result) {
-        var expectedHtml = "<table>" +
-            "<tr><td><p>Top left</p></td><td><p>Top right</p></td></tr>" +
-            "<tr><td><p>Bottom left</p></td><td><p>Bottom right</p></td></tr>" +
-            "</table>";
+        var expectedHtml = '<table>' +
+            '<tr><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Top left</p></td><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Top right</p></td></tr>' +
+            '<tr><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Bottom left</p></td><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Bottom right</p></td></tr>' +
+            '</table>';
         assert.equal(result.value, expectedHtml);
     });
 });
@@ -445,10 +445,10 @@ test('header rows are wrapped in thead', function() {
     var converter = new DocumentConverter();
     
     return converter.convertToHtml(table).then(function(result) {
-        var expectedHtml = "<table>" +
-            "<thead><tr><th></th></tr><tr><th></th></tr></thead>" +
-            "<tbody><tr><td></td></tr></tbody>" +
-            "</table>";
+        var expectedHtml = '<table>' +
+            '<thead><tr><th style=" border-width: 3px; border-style: none none none none; vertical-align: top;"></th></tr><tr><th style=" border-width: 3px; border-style: none none none none; vertical-align: top;"></th></tr></thead>' +
+            '<tbody><tr><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"></td></tr></tbody>' +
+            '</table>';
         assert.equal(result.value, expectedHtml);
     });
 });
@@ -461,7 +461,7 @@ test('tbody is omitted if all rows are headers', function() {
     
     return converter.convertToHtml(table).then(function(result) {
         var expectedHtml = "<table>" +
-            "<thead><tr><th></th></tr></thead>" +
+            '<thead><tr><th style=" border-width: 3px; border-style: none none none none; vertical-align: top;"></th></tr></thead>' +
             "</table>";
         assert.equal(result.value, expectedHtml);
     });
@@ -490,7 +490,7 @@ test('empty cells are preserved in table', function() {
     
     return converter.convertToHtml(table).then(function(result) {
         var expectedHtml = "<table>" +
-            "<tr><td></td><td><p>Top right</p></td></tr>" +
+            '<tr><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"></td><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Top right</p></td></tr>' +
             "</table>";
         assert.equal(result.value, expectedHtml);
     });
@@ -507,7 +507,7 @@ test('table cells are written with colSpan if not equal to one', function() {
     
     return converter.convertToHtml(table).then(function(result) {
         var expectedHtml = "<table>" +
-            "<tr><td colspan=\"2\"><p>Top left</p></td><td><p>Top right</p></td></tr>" +
+            '<tr><td colspan=\"2\" style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Top left</p></td><td style=" border-width: 3px; border-style: none none none none; vertical-align: top;"><p>Top right</p></td></tr>' +
             "</table>";
         assert.equal(result.value, expectedHtml);
     });
@@ -523,7 +523,7 @@ test('table cells are written with rowSpan if not equal to one', function() {
     
     return converter.convertToHtml(table).then(function(result) {
         var expectedHtml = "<table>" +
-            "<tr><td rowspan=\"2\"></td></tr>" +
+            '<tr><td rowspan=\"2\" style=" border-width: 3px; border-style: none none none none; vertical-align: top;"></td></tr>' +
             "</table>";
         assert.equal(result.value, expectedHtml);
     });
@@ -656,7 +656,7 @@ test('comment references are linked to comment after main body', function() {
 });
 
 test('images are written with data URIs', function() {
-    var imageBuffer = new Buffer("Not an image at all!");
+    var imageBuffer = Buffer.from("Not an image at all!");
     var image = new documents.Image({
         readImage: function(encoding) {
             return promises.when(imageBuffer.toString(encoding));
@@ -670,7 +670,7 @@ test('images are written with data URIs', function() {
 });
 
 test('images have alt attribute if available', function() {
-    var imageBuffer = new Buffer("Not an image at all!");
+    var imageBuffer = Buffer.from("Not an image at all!");
     var image = new documents.Image({
         readImage: function() {
             return promises.when(imageBuffer);
@@ -688,7 +688,7 @@ test('images have alt attribute if available', function() {
 });
 
 test('can add custom handler for images', function() {
-    var imageBuffer = new Buffer("Not an image at all!");
+    var imageBuffer = Buffer.from("Not an image at all!");
     var image = new documents.Image({
         readImage: function(encoding) {
             return promises.when(imageBuffer.toString(encoding));
@@ -711,7 +711,7 @@ test('when custom image handler throws error then error is stored in error messa
     var error = new Error("Failed to convert image");
     var image = new documents.Image({
         readImage: function(encoding) {
-            return promises.when(new Buffer().toString(encoding));
+            return promises.when(Buffer.alloc().toString(encoding));
         },
         contentType: "image/png"
     });
@@ -756,11 +756,11 @@ function runOfText(text, properties) {
 }
 
 test('when initials are not blank then comment author label is initials', function() {
-    assert.equal(commentAuthorLabel({authorInitials: "TP"}), "TP")
+    assert.equal(commentAuthorLabel({authorInitials: "TP"}), "TP");
 });
 
 test('when initials are blank then comment author label is blank', function() {
-    assert.equal(commentAuthorLabel({authorInitials: ""}), "")
-    assert.equal(commentAuthorLabel({authorInitials: undefined}), "")
-    assert.equal(commentAuthorLabel({authorInitials: null}), "")
+    assert.equal(commentAuthorLabel({authorInitials: ""}), "");
+    assert.equal(commentAuthorLabel({authorInitials: undefined}), "");
+    assert.equal(commentAuthorLabel({authorInitials: null}), "");
 });

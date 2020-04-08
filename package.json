@@ -1,7 +1,7 @@
 {
   "name": "h4mammoth",
   "version": "2.0.7",
-  "author": "Gorjan Petrovski<gp@hfour.com>, Michael Williamson <mike@zwobble.org>",
+  "author": "Gorjan Petrovski<gorjan@hfour.com>, Michael Williamson <mike@zwobble.org>",
   "description": "Incompatible fork from mammoth.js. Convert Word documents from docx to simple HTML and Markdown",
   "keywords": [
     "docx",
@@ -14,11 +14,11 @@
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gorjan-h4/mammoth.js.git"
+    "url": "https://github.com/hfour/mammoth.js.git"
   },
   "dependencies": {
     "argparse": "~1.0.3",
-    "bluebird": "~3.4.0",
+    "bluebird": "^3.7.2",
     "jszip": "~2.5.0",
     "lop": "~0.4.0",
     "path-is-absolute": "^1.0.0",
@@ -27,15 +27,15 @@
     "xmlbuilder": "^10.0.0"
   },
   "devDependencies": {
-    "mocha": "~2.2.5",
     "browserify": "~13.0.1",
     "browserify-prepend-licenses": "~1.0.0",
     "duck": "~0.1.11",
-    "uglify-js": "~2.4.8",
-    "temp": "~0.7.0",
     "eslint": "2.13.1",
-    "hamjest": "2.13.0",
-    "flow-bin": "^0.32.0"
+    "flow-bin": "^0.32.0",
+    "hamjest": "^3.3.1",
+    "mocha": "^7.1.1",
+    "temp": "~0.7.0",
+    "uglify-js": "~2.4.8"
   },
   "browser": {
     "./lib/unzip.js": "./browser/unzip.js",
@@ -46,8 +46,14 @@
   },
   "scripts": {
     "pretest": "eslint lib tests",
+    "deep-clean": "git clean -fdx ./build ./node_modules",
+    "clean": "git clean -fdx ./build",
     "test": "mocha 'test/**/*.tests.js'",
-    "prepublish": "make mammoth.browser.min.js"
+    "testfile": "mocha",
+    "build": "mkdir -p build && yarn mammoth.browser.js && yarn mammoth.browser.min.js",
+    "mammoth.browser.js": "node_modules/.bin/browserify lib/index.js --standalone mammoth -p browserify-prepend-licenses > ./build/mammoth.browser.js",
+    "mammoth.browser.min.js": "node_modules/.bin/browserify lib/index.js --standalone mammoth -p browserify-prepend-licenses > ./build/mammoth.browser.min.js",
+    "prepublishOnly": "yarn pretest && yarn test && yarn build"
   },
   "license": "BSD-2-Clause"
 }

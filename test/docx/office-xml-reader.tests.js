@@ -6,7 +6,7 @@ var test = require("../test")(module);
 
 
 test("mc:AlternateContent is replaced by contents of mc:Fallback", function() {
-  var xmlString =
+    var xmlString =
       '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
       '<numbering xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">' +
       '<mc:AlternateContent>' +
@@ -18,7 +18,7 @@ test("mc:AlternateContent is replaced by contents of mc:Fallback", function() {
       '</mc:Fallback>' +
       '</mc:AlternateContent>' +
       '</numbering>';
-  return officeXmlReader.read(xmlString).then(function(element) {
-      assert.deepEqual(element.children, [xml.element("fallback")]);
-  });
+    return officeXmlReader.read(xmlString).then(function(element) {
+        assert.deepEqual(element.children, [xml.element("fallback")]);
+    });
 });

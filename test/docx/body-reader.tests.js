@@ -449,7 +449,7 @@ var booleanRunProperties = [
     {name: "isUnderline", tagName: "w:u"},
     {name: "isItalic", tagName: "w:i"},
     {name: "isStrikethrough", tagName: "w:strike"},
-    {name: "isSmallCaps", tagName: "w:smallCaps"},
+    {name: "isSmallCaps", tagName: "w:smallCaps"}
 ];
 
 booleanRunProperties.forEach(function(runProperty) {
@@ -731,7 +731,7 @@ test('_GoBack bookmark is ignored', function() {
     assert.deepEqual(result.value, []);
 });
 
-var IMAGE_BUFFER = new Buffer("Not an image at all!");
+var IMAGE_BUFFER = Buffer.from("Not an image at all!");
 var IMAGE_RELATIONSHIP_ID = "rId5";
 
 function isSuccess(valueMatcher) {
@@ -1047,7 +1047,10 @@ test("w:br with column type is read as column break", function() {
 test("warning on breaks that aren't recognised", function() {
     var breakXml = new XmlElement("w:br", {"w:type": "unknownBreakType"}, []);
     var result = readXmlElement(breakXml);
-    assert.deepEqual(result.value, []);
+    assert.deepEqual(result.value, {
+        elType: 'w:br',
+        type: 'unrecognizedContent'
+    });
     assert.deepEqual(result.messages, [warning("Unsupported break type: unknownBreakType")]);
 });
 
@@ -1081,7 +1084,10 @@ test("emits warning on unrecognised element", function() {
             message: "An unrecognised element was ignored: w:not-an-element"
         }]
     );
-    assert.deepEqual(result.value, []);
+    assert.deepEqual(result.value, {
+        elType: 'w:not-an-element',
+        type: 'unrecognizedContent'
+    });
 });
 
 test("w:bookmarkEnd is ignored without warning", function() {
@@ -1190,11 +1196,4 @@ function createLinkedBlip(relationshipId) {
 function runOfText(text) {
     var textXml = new XmlElement("w:t", {}, [xml.text(text)]);
     return new XmlElement("w:r", {}, [textXml]);
-}
-
-function assertImageBuffer(element, expectedImageBuffer) {
-    return element.read()
-        .then(function(readValue) {
-            assert.equal(readValue, expectedImageBuffer);
-        });
 }
