@@ -12,14 +12,14 @@ var tests = {
     <ul>
         <li>Hello
             <ol>
-                <li data-numbering="{'ilvl':'1','numFmt':'decimal','start':'1','lvlText':'%2.','lvlJc':'left'}">Mello</li>
-                <li data-numbering="{'ilvl':'1','numFmt':'decimal','start':'1','lvlText':'%2.','lvlJc':'left'}">Yello</li>
+                <li data-numbering="{'ilvl':'1','numFmt':'decimal','start':'1','lvlText':'%2.','lvlJc':'left','numId':'2'}">Mello</li>
+                <li data-numbering="{'ilvl':'1','numFmt':'decimal','start':'1','lvlText':'%2.','lvlJc':'left','numId':'2'}">Yello</li>
             </ol>
         </li>
         <li>Hello
             <ol>
-                <li data-numbering="{'ilvl':'1','numFmt':'decimal','start':'1','lvlText':'%2.','lvlJc':'left'}">Mello</li>
-                <li data-numbering="{'ilvl':'1','numFmt':'decimal','start':'1','lvlText':'%2.','lvlJc':'left'}">Yello</li>
+                <li data-numbering="{'ilvl':'1','numFmt':'decimal','start':'1','lvlText':'%2.','lvlJc':'left','numId':'2'}">Mello</li>
+                <li data-numbering="{'ilvl':'1','numFmt':'decimal','start':'1','lvlText':'%2.','lvlJc':'left','numId':'2'}">Yello</li>
             </ol>
         </li>
     </ul>
@@ -27,15 +27,15 @@ var tests = {
 
     'num-bullet.docx': { output: `
     <ol>
-        <li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1.','lvlJc':'left'}">Hello</li>
-        <li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1.','lvlJc':'left'}">Mello
+        <li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1.','lvlJc':'left','numId':'2'}">Hello</li>
+        <li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1.','lvlJc':'left','numId':'2'}">Mello
             <ul>
                 <li>Hello</li>
                 <li>Mello</li>
             </ul>
         </li>
-        <li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1.','lvlJc':'left'}">Hello</li>
-        <li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1.','lvlJc':'left'}">Mello
+        <li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1.','lvlJc':'left','numId':'2'}">Hello</li>
+        <li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1.','lvlJc':'left','numId':'2'}">Mello
             <ul>
                 <li>Hello</li>
                 <li>Mello</li>
@@ -49,8 +49,8 @@ var tests = {
         <li>Hello</li>
         <li>Mello
             <ol>
-                <li data-numbering="{'ilvl':'1','numFmt':'decimal','start':'1','lvlText':'%2.','lvlJc':'left'}">Hello</li>
-                <li data-numbering="{'ilvl':'1','numFmt':'decimal','start':'1','lvlText':'%2.','lvlJc':'left'}">Mello
+                <li data-numbering="{'ilvl':'1','numFmt':'decimal','start':'1','lvlText':'%2.','lvlJc':'left','numId':'2'}">Hello</li>
+                <li data-numbering="{'ilvl':'1','numFmt':'decimal','start':'1','lvlText':'%2.','lvlJc':'left','numId':'2'}">Mello
                     <ul>
                         <li>Hello</li>
                         <li>Mello</li>
@@ -63,14 +63,14 @@ var tests = {
 
     'num-bullet-num.docx': { output: `
         <ol>
-            <li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1.','lvlJc':'left'}">Hello</li>
-            <li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1.','lvlJc':'left'}">Mello
+            <li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1.','lvlJc':'left','numId':'2'}">Hello</li>
+            <li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1.','lvlJc':'left','numId':'2'}">Mello
                 <ul>
                     <li>Hello</li>
                     <li>Mello
                         <ol>
-                            <li data-numbering="{'ilvl':'2','numFmt':'lowerRoman','start':'1','lvlText':'%3.','lvlJc':'right'}">Hello</li>
-                            <li data-numbering="{'ilvl':'2','numFmt':'lowerRoman','start':'1','lvlText':'%3.','lvlJc':'right'}">Mello</li>
+                            <li data-numbering="{'ilvl':'2','numFmt':'lowerRoman','start':'1','lvlText':'%3.','lvlJc':'right','numId':'2'}">Hello</li>
+                            <li data-numbering="{'ilvl':'2','numFmt':'lowerRoman','start':'1','lvlText':'%3.','lvlJc':'right','numId':'2'}">Mello</li>
                         </ol>
                     </li>
                 </ul>
@@ -86,8 +86,8 @@ var tests = {
                 <li>Hello</li>
                 <li>Mello
                     <ol>
-                        <li data-numbering="{'ilvl':'2','numFmt':'decimal','start':'1','lvlText':'%3.','lvlJc':'left'}">Hello</li>
-                        <li data-numbering="{'ilvl':'2','numFmt':'decimal','start':'1','lvlText':'%3.','lvlJc':'left'}">Mello</li>
+                        <li data-numbering="{'ilvl':'2','numFmt':'decimal','start':'1','lvlText':'%3.','lvlJc':'left','numId':'2'}">Hello</li>
+                        <li data-numbering="{'ilvl':'2','numFmt':'decimal','start':'1','lvlText':'%3.','lvlJc':'left','numId':'2'}">Mello</li>
                     </ol>
                 </li>
             </ul>
