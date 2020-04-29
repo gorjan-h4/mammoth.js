@@ -53,7 +53,7 @@ var tests = {
     `},
 
     'lvlOverride-numbers-dot.docx': { output: `
-    <ol><li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1 DOT!','lvlJc':'left','numId':'10'}">One</li><li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1 DOT!','lvlJc':'left','numId':'10'}">Two</li><li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1 DOT!','lvlJc':'left','numId':'10'}">Three</li></ol>
+    <ol><li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1 DOT!','lvlJc':'left','override':{},'numId':'10'}">One</li><li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1 DOT!','lvlJc':'left','override':{},'numId':'10'}">Two</li><li data-numbering="{'ilvl':'0','numFmt':'decimal','start':'1','lvlText':'%1 DOT!','lvlJc':'left','override':{},'numId':'10'}">Three</li></ol>
     `},
 }
 
