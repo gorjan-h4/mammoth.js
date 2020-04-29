@@ -111,3 +111,25 @@ Object.keys(tests).forEach((filename)=>{
         });
     })
 });
+
+const headingMultiLvlOverride = `
+<h1 data-numbering="{'ilvl':'0','numFmt':'decimal','start':null,'lvlText':'%1.','lvlJc':'right','numId':'4'}">HEADING 1 Sample</h1>
+<p>Paragraph after heading 1</p>
+<h2 data-numbering="{'ilvl':'1','numFmt':'decimal','start':null,'lvlText':'%1.%2.','lvlJc':'right','numId':'5'}">Heading 2 sample</h2>
+<p>Paragraph after heading 2</p>
+<h3 data-numbering="{'ilvl':'2','numFmt':'decimal','start':null,'lvlText':'%1.%2.%3.','lvlJc':'right','numId':'6'}">Heading 3 sample</h3>
+<p>Paragraph after heading 3 sample</p>
+<h4 data-numbering="{'ilvl':'3','numFmt':'decimal','start':null,'lvlText':'%1.%2.%3.%4.','lvlJc':'right','numId':'7'}">Heading 4 sample</h4>
+<p>Paragraph after heading 4 sample</p>
+<h5 data-numbering="{'ilvl':'4','numFmt':'decimal','start':null,'lvlText':'%1.%2.%3.%4.%5.','lvlJc':'right','numId':'8'}">Heading 5 sample</h5>
+<p>Paragraph after heading 5 sample</p>
+<h6 data-numbering="{'ilvl':'5','numFmt':'decimal','start':null,'lvlText':'%1.%2.%3.%4.%5.%6.','lvlJc':'right','numId':'9'}">Heading 6 sample</h6>
+<p>Paragraph after heading 6 sample</p>
+`;
+
+test(testName('heading-multi-lvlOverride.docx'), function() {
+    var docxPath = path.join(__dirname, dataFile('heading-multi-lvlOverride.docx'));
+    return mammoth.convertToHtml({path: docxPath}).then(function(result) {
+        assert.equal(result.value, concatHtml(headingMultiLvlOverride));
+    });
+})
